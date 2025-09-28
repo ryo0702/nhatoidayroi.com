@@ -1,0 +1,90 @@
+# Vietnamese translation for nhatoidayroi theme
+# Copyright (C) 2024 nhatoidayroi.com
+msgid ""
+msgstr ""
+"Project-Id-Version: nhatoidayroi 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "高品質な新築マンション"
+msgstr "Chung cư cao cấp mới xây"
+
+msgid "理想の住まいを見つけませんか？"
+msgstr "Tìm ngôi nhà lý tưởng của bạn"
+
+msgid "理想のマンションを検索"
+msgstr "Tìm kiếm chung cư lý tưởng"
+
+msgid "希望エリア"
+msgstr "Khu vực mong muốn"
+
+msgid "例：渋谷区、新宿区"
+msgstr "VD: Shibuya, Shinjuku"
+
+msgid "価格（下限）"
+msgstr "Giá (Tối thiểu)"
+
+msgid "選択してください"
+msgstr "Vui lòng chọn"
+
+msgid "価格（上限）"
+msgstr "Giá (Tối đa)"
+
+msgid "間取り"
+msgstr "Mặt bằng"
+
+msgid "エリア"
+msgstr "Khu vực"
+
+msgid "検索する"
+msgstr "Tìm kiếm"
+
+msgid "おすすめマンション"
+msgstr "Chung cư được đề xuất"
+
+msgid "おすすめ"
+msgstr "Đề xuất"
+
+msgid "価格お問い合わせ"
+msgstr "Giá liên hệ"
+
+msgid "間取り未定"
+msgstr "Mặt bằng chưa xác định"
+
+msgid "面積未定"
+msgstr "Diện tích chưa xác định"
+
+msgid "所在地未定"
+msgstr "Vị trí chưa xác định"
+
+msgid "詳細を見る"
+msgstr "Xem chi tiết"
+
+msgid "すべてのマンションを見る"
+msgstr "Xem tất cả chung cư"
+
+msgid "お知らせ"
+msgstr "Tin tức"
+
+msgid "すべてのお知らせを見る"
+msgstr "Xem tất cả tin tức"
+
+msgid "ホーム"
+msgstr "Trang chủ"
+
+msgid "マンション一覧"
+msgstr "Danh sách chung cư"
+
+msgid "会社概要"
+msgstr "Giới thiệu công ty"
+
+msgid "お問い合わせ"
+msgstr "Liên hệ"
