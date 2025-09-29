@@ -53,43 +53,43 @@
                                 <?php the_post_thumbnail('large', array('style' => 'width: 100%; height: 400px; object-fit: cover; border-radius: 10px;')); ?>
                             <?php else : ?>
                                 <div style="width: 100%; height: 400px; background: #f0f0f0; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #999;">
-                                    <?php 'Đang tải hình ảnh'; ?>
+                                    Đang tải hình ảnh
                                 </div>
                             <?php endif; ?>
                         </div>
                         
                         <!-- プロジェクト詳細情報 -->
                         <div class="project-info" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 40px;">
-                            <h2 style="font-size: 24px; color: #333; margin-bottom: 25px; border-bottom: 2px solid #dc2626; padding-bottom: 10px;"><?php 'Chi tiết dự án'; ?></h2>
+                            <h2 style="font-size: 24px; color: #333; margin-bottom: 25px; border-bottom: 2px solid #dc2626; padding-bottom: 10px;">Chi tiết dự án</h2>
                             
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                                 <div class="info-item">
-                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;"><?php 'Vị trí'; ?></label>
+                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;">Vị trí</label>
                                     <span><?php echo get_post_meta(get_the_ID(), 'project_location', true) ?: 'Chưa xác định'; ?></span>
                                 </div>
                                 
                                 <div class="info-item">
-                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;"><?php 'Loại dự án'; ?></label>
+                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;">Loại dự án</label>
                                     <span><?php echo get_post_meta(get_the_ID(), 'project_type', true) ?: 'Chưa xác định'; ?></span>
                                 </div>
                                 
                                 <div class="info-item">
-                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;"><?php 'Ngày hoàn thành'; ?></label>
+                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;">Ngày hoàn thành</label>
                                     <span><?php echo get_post_meta(get_the_ID(), 'project_completion_date', true) ?: 'Chưa xác định'; ?></span>
                                 </div>
                                 
                                 <div class="info-item">
-                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;"><?php 'Diện tích xây dựng'; ?></label>
+                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;">Diện tích xây dựng</label>
                                     <span><?php echo get_post_meta(get_the_ID(), 'project_area', true) ?: 'Chưa xác định'; ?></span>
                                 </div>
                                 
                                 <div class="info-item">
-                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;"><?php 'Cấu trúc'; ?></label>
+                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;">Cấu trúc</label>
                                     <span><?php echo get_post_meta(get_the_ID(), 'project_structure', true) ?: 'Chưa xác định'; ?></span>
                                 </div>
                                 
                                 <div class="info-item">
-                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;"><?php 'Khu vực'; ?></label>
+                                    <label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;">Khu vực</label>
                                     <span>
                                         <?php
                                         $project_areas = get_the_terms(get_the_ID(), 'area');
@@ -100,7 +100,7 @@
                                             }
                                             echo implode(', ', $area_names);
                                         } else {
-                                            'Chưa xác định';
+                                            echo 'Chưa xác định';
                                         }
                                         ?>
                                     </span>
@@ -110,7 +110,7 @@
                         
                         <!-- プロジェクト説明 -->
                         <div class="project-description" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 40px;">
-                            <h2 style="font-size: 24px; color: #333; margin-bottom: 20px; border-bottom: 2px solid #dc2626; padding-bottom: 10px;"><?php 'Tổng quan dự án'; ?></h2>
+                            <h2 style="font-size: 24px; color: #333; margin-bottom: 20px; border-bottom: 2px solid #dc2626; padding-bottom: 10px;">Tổng quan dự án</h2>
                             <div style="line-height: 1.8; color: #555;">
                                 <?php the_content(); ?>
                             </div>
@@ -122,7 +122,7 @@
                         if ($features) : 
                         ?>
                             <div class="project-features" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 40px;">
-                                <h2 style="font-size: 24px; color: #333; margin-bottom: 20px; border-bottom: 2px solid #dc2626; padding-bottom: 10px;"><?php 'Đặc điểm dự án'; ?></h2>
+                                <h2 style="font-size: 24px; color: #333; margin-bottom: 20px; border-bottom: 2px solid #dc2626; padding-bottom: 10px;">Đặc điểm dự án</h2>
                                 <div style="line-height: 1.8; color: #555;">
                                     <?php echo wpautop($features); ?>
                                 </div>
@@ -136,14 +136,14 @@
                         
                         <!-- お問い合わせボックス -->
                         <div class="contact-box" style="background: #dc2626; color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center;">
-                            <h3 style="font-size: 20px; margin-bottom: 15px;"><?php 'Liên hệ'; ?></h3>
-                            <p style="margin-bottom: 20px; line-height: 1.5;"><?php _et('このプロジェクトについて<br>詳しく知りたい方は<br>お気軽にお問い合わせください'); ?></p>
+                            <h3 style="font-size: 20px; margin-bottom: 15px;">Liên hệ</h3>
+                            <p style="margin-bottom: 20px; line-height: 1.5;">Về dự án này<br>Nếu bạn muốn biết thêm chi tiết<br>Vui lòng liên hệ với chúng tôi</p>
                             <div style="margin-bottom: 20px;">
                                 <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">03-1234-5678</div>
-                                <div style="font-size: 14px; opacity: 0.9;"><?php _et('営業時間: 9:00-18:00（土日祝除く）'); ?></div>
+                                <div style="font-size: 14px; opacity: 0.9;">Giờ làm việc: 9:00-18:00 (trừ thứ 7, chủ nhật và ngày lễ)</div>
                             </div>
                             <a href="<?php echo esc_url(home_url('/contact/')); ?>" style="background: white; color: #dc2626; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s ease;">
-                                <?php _et('お問い合わせフォーム'); ?>
+                                Biểu mẫu liên hệ
                             </a>
                         </div>
                         
@@ -159,7 +159,7 @@
                         if ($related_projects->have_posts()) :
                         ?>
                             <div class="related-projects" style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;"><?php 'Dự án liên quan'; ?></h3>
+                                <h3 style="font-size: 18px; color: #333; margin-bottom: 20px;">Dự án liên quan</h3>
                                 <?php while ($related_projects->have_posts()) : $related_projects->the_post(); ?>
                                     <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
                                         <div style="display: flex; gap: 15px;">
@@ -179,7 +179,7 @@
                                     </div>
                                 <?php endwhile; ?>
                                 <div style="text-align: center;">
-                                    <a href="<?php echo esc_url(home_url('/projects/')); ?>" style="color: #dc2626; text-decoration: none; font-size: 14px;"><?php 'Xem tất cả dự án'; ?></a>
+                                    <a href="<?php echo esc_url(home_url('/projects/')); ?>" style="color: #dc2626; text-decoration: none; font-size: 14px;">Xem tất cả dự án</a>
                                 </div>
                             </div>
                         <?php endif; ?>

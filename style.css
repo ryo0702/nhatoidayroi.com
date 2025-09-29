@@ -11,10 +11,38 @@ Version: 1.0
 }
 
 body {
-    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    font-family: 'Roboto', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
+}
+
+/* 全要素にRobotoフォントを適用 */
+* {
+    font-family: 'Roboto', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+}
+
+/* 見出し要素のフォントウェイト調整 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+/* ナビゲーション要素 */
+.nav-link, .nav-menu a, .mobile-nav-menu a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+/* ボタン要素 */
+button, .button, .btn, .search-btn, .mansion-btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+/* フォーム要素 */
+input, textarea, select {
+    font-family: 'Roboto', sans-serif;
 }
 
 /* コンテナ */
@@ -35,6 +63,274 @@ body {
     z-index: 1000;
 }
 
+/* 上段ナビゲーション */
+.top-nav {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 10px 0;
+}
+
+.top-nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-actions a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.login-btn {
+    border: 1px solid #dc2626;
+    color: #dc2626 !important;
+}
+
+.login-btn:hover {
+    background: #dc2626;
+    color: #fff !important;
+}
+
+.register-btn {
+    background: #dc2626;
+    color: #fff !important;
+}
+
+.register-btn:hover {
+    background: #b91c1c;
+}
+
+.contact-btn {
+    color: #666 !important;
+}
+
+.contact-btn:hover {
+    color: #dc2626 !important;
+}
+
+/* 下段ナビゲーション */
+.main-nav {
+    background: #fff;
+    padding: 15px 0;
+}
+
+.main-nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.area-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: #f0f6fc;
+    color: #dc2626;
+}
+
+.nav-icon {
+    font-size: 18px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: #f0f6fc;
+    color: #dc2626;
+    padding-left: 25px;
+}
+
+
+/* モバイルメニュー */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.mobile-menu {
+    display: none;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+.mobile-menu-content {
+    padding: 20px 0;
+}
+
+.mobile-user-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.mobile-user-actions a {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.mobile-login-btn {
+    border: 1px solid #dc2626;
+    color: #dc2626;
+}
+
+.mobile-register-btn {
+    background: #dc2626;
+    color: #fff;
+}
+
+.mobile-contact-btn {
+    background: #f8f9fa;
+    color: #666;
+}
+
+.mobile-area-nav {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.mobile-area-nav h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.mobile-area-section {
+    margin-bottom: 20px;
+}
+
+.mobile-area-section h4 {
+    margin: 0 0 10px 0;
+    color: #dc2626;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.mobile-area-section a {
+    display: block;
+    padding: 8px 0;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.mobile-area-section a:hover {
+    color: #dc2626;
+    padding-left: 10px;
+}
+
+.mobile-project-nav {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.mobile-project-nav h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.mobile-project-section {
+    margin-bottom: 20px;
+}
+
+.mobile-project-section a {
+    display: block;
+    padding: 8px 0;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.mobile-project-section a:hover {
+    color: #dc2626;
+    padding-left: 10px;
+}
 
 .header-content {
     display: flex;
@@ -225,12 +521,78 @@ body {
     gap: 30px;
 }
 
+.mansion-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* プロジェクトカードリンク */
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.project-card-link:hover .project-card {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.project-card-link:hover .project-btn {
+    background: #b91c1c;
+}
+
+/* Call to Action セクション */
+.cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.cta-form {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-form input[type="email"] {
+    transition: all 0.3s ease;
+}
+
+.cta-form input[type="email"]:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.cta-form button {
+    transition: all 0.3s ease;
+}
+
+.cta-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    background: #f3f4f6 !important;
+    color: #dc2626 !important;
+}
+
 .mansion-card {
     background: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .mansion-card:hover {
@@ -300,9 +662,12 @@ body {
     cursor: pointer;
     transition: background 0.3s ease;
     width: 100%;
+    text-align: center;
+    display: block;
+    text-decoration: none;
 }
 
-.mansion-btn:hover {
+.mansion-card:hover .mansion-btn {
     background: #dc2626;
 }
 
@@ -473,5 +838,82 @@ body {
     
     .slide-content p {
         font-size: 14px;
+    }
+    
+    /* 2段ナビゲーションのレスポンシブ対応 */
+    .top-nav-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .user-actions {
+        gap: 10px;
+    }
+    
+    .user-actions a {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .main-nav-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .area-nav {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .nav-link {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: #f8f9fa;
+        margin-top: 10px;
+        border-radius: 4px;
+    }
+    
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .mobile-menu.active {
+        display: block;
+    }
+    
+    /* CTA セクションのレスポンシブ対応 */
+    .cta-section h2 {
+        font-size: 28px !important;
+    }
+    
+    .cta-section p {
+        font-size: 16px !important;
+        padding: 0 20px;
+    }
+    
+    .cta-form {
+        flex-direction: column !important;
+        gap: 15px !important;
+        padding: 0 20px;
+    }
+    
+    .cta-form input[type="email"] {
+        min-width: auto !important;
+        width: 100% !important;
+    }
+    
+    .cta-form button {
+        width: 100% !important;
     }
 }

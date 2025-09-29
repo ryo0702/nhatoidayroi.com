@@ -53,6 +53,41 @@ function theme_setup() {
 }
 add_action('after_setup_theme', 'theme_setup');
 
+// Google Fontsの読み込み
+function enqueue_google_fonts() {
+    wp_enqueue_style('google-fonts-roboto', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', false);
+}
+add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
+
+// CTA フォーム処理
+function handle_cta_email_signup() {
+    if (isset($_POST['submit_cta']) && wp_verify_nonce($_POST['cta_nonce'], 'cta_email_signup')) {
+        $email = sanitize_email($_POST['cta_email']);
+        
+        if (is_email($email)) {
+            // メールアドレスをデータベースに保存（オプション）
+            $existing_emails = get_option('cta_subscribers', array());
+            if (!in_array($email, $existing_emails)) {
+                $existing_emails[] = $email;
+                update_option('cta_subscribers', $existing_emails);
+            }
+            
+            // 管理者に通知メールを送信
+            $subject = '新しいメール登録 - ' . get_bloginfo('name');
+            $message = "新しいメールアドレスが登録されました:\n\n";
+            $message .= "Email: " . $email . "\n";
+            $message .= "登録日時: " . current_time('Y-m-d H:i:s') . "\n";
+            $message .= "IPアドレス: " . $_SERVER['REMOTE_ADDR'] . "\n";
+            
+            wp_mail(get_option('admin_email'), $subject, $message);
+            
+            // 成功メッセージをセッションに保存
+            setcookie('cta_success', '1', time() + 30, '/');
+        }
+    }
+}
+add_action('init', 'handle_cta_email_signup');
+
 // スタイルとスクリプトの読み込み
 function theme_scripts() {
     // メインのCSS
