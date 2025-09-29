@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php
+include get_template_directory() . '/parts/header.php';
+?>
 
 <main id="main" class="site-main">
     
@@ -178,4 +180,6 @@
 }
 </style>
 
-<?php get_footer(); ?>
+<?php
+include get_template_directory() . '/parts/footer.php';
+?>

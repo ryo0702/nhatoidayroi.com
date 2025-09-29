@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php
+include get_template_directory() . '/parts/header.php';
+?>
 
 <main id="main" class="site-main">
     <?php while (have_posts()) : the_post(); ?>
@@ -268,4 +270,6 @@
     <?php endwhile; ?>
 </main>
 
-<?php get_footer(); ?>
+<?php
+include get_template_directory() . '/parts/footer.php';
+?>

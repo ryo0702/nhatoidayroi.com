@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php
+include get_template_directory() . '/parts/header.php';
+?>
 <main id="main" class="site-main">
     <?php
     include get_template_directory() . '/parts/hero-slider.php';
@@ -10,4 +12,6 @@
     include get_template_directory() . '/parts/archive-top-news.php';
     ?>
 </main>
-<?php get_footer(); ?>
+<?php
+include get_template_directory() . '/parts/footer.php';
+?>

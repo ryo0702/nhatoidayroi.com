@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php
+include get_template_directory() . '/parts/header.php';
+?>
 
 <main id="main" class="site-main">
     <section class="page-header" style="padding: 100px 0 60px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
@@ -250,4 +252,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<?php get_footer(); ?>
+<?php
+include get_template_directory() . '/parts/footer.php';
+?>
