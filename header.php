@@ -16,15 +16,9 @@
         <div class="header-content">
             <!-- ロゴ -->
             <div class="logo">
-                <?php
-                if (has_custom_logo()) {
-                    the_custom_logo();
-                } else {
-                    echo '<a href="' . esc_url(home_url('/')) . '" rel="home">';
-                    echo '<span style="color: #dc2626; font-weight: bold; font-size: 24px;">新築マンション.com</span>';
-                    echo '</a>';
-                }
-                ?>
+                <a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/logo-hanoi.png" alt="<?php bloginfo('name'); ?>" style="height: 50px; width: auto;">
+                </a>
             </div>
             
             <!-- メインナビゲーション -->
@@ -69,6 +63,7 @@ function default_menu() {
     echo '<li><a href="' . esc_url(home_url('/')) . '">Trang chủ</a></li>';
     echo '<li><a href="' . esc_url(home_url('/properties/')) . '">Danh sách bất động sản</a></li>';
     echo '<li><a href="' . esc_url(home_url('/projects/')) . '">Dự án</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/companies/')) . '">Công ty phát triển</a></li>';
     echo '<li><a href="' . esc_url(home_url('/about/')) . '">Giới thiệu công ty</a></li>';
     echo '<li><a href="' . esc_url(home_url('/contact/')) . '">Liên hệ</a></li>';
     echo '</ul>';
