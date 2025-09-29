@@ -130,7 +130,7 @@ include get_template_directory() . '/parts/header.php';
                 <div class="mansions-grid" id="mansions-container">
                     <?php while (have_posts()) : the_post(); ?>
                         <div class="mansion-card">
-                            <div class="mansion-image" style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'mansion-thumbnail') ?: get_template_directory_uri() . '/images/default-mansion.jpg'; ?>')">
+                            <div class="mansion-image" style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'mansion-thumbnail') ?: get_template_directory_uri() . '/images/nophoto.png'; ?>')">
                                 <?php if (get_post_meta(get_the_ID(), 'featured', true) === 'yes') : ?>
                                     <div class="mansion-badge">おすすめ</div>
                                 <?php endif; ?>

@@ -1,6 +1,6 @@
 <a href="<?php the_permalink(); ?>" class="project-card-link">
     <div class="project-card" style="background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease; cursor: pointer;">
-        <div class="project-image" style="width: 100%; height: 200px; background-size: cover; background-position: center; background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'mansion-thumbnail') ?: get_template_directory_uri() . '/images/default-project.jpg'; ?>')">
+        <div class="project-image" style="width: 100%; height: 200px; background-size: cover; background-position: center; background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'mansion-thumbnail') ?: get_template_directory_uri() . '/images/nophoto.png'; ?>')">
         </div>
         <div class="project-content" style="padding: 25px;">
             <h3 style="font-size: 20px; color: #333; margin-bottom: 15px; line-height: 1.4;"><?php the_title(); ?></h3>

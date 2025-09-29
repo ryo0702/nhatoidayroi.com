@@ -67,9 +67,7 @@ include get_template_directory() . '/parts/header.php';
                         <?php if (has_post_thumbnail()) : ?>
                             <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>" alt="<?php the_title(); ?>" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         <?php else : ?>
-                            <div style="width: 100%; height: 300px; background: #ddd; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                                <span style="color: #999; font-size: 18px;">Hình ảnh bất động sản</span>
-                            </div>
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/nophoto.png" alt="<?php the_title(); ?>" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         <?php endif; ?>
                     </div>
                 </div>
@@ -175,9 +173,7 @@ include get_template_directory() . '/parts/header.php';
                                 <h2 style="font-size: 24px; color: #333; margin-bottom: 25px; border-bottom: 2px solid #dc2626; padding-bottom: 10px;">Dự án liên quan</h2>
                                 
                                 <div style="display: flex; gap: 20px; align-items: center;">
-                                    <?php if (has_post_thumbnail($related_project_id)) : ?>
-                                        <img src="<?php echo get_the_post_thumbnail_url($related_project_id, 'medium'); ?>" alt="<?php echo get_the_title($related_project_id); ?>" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;">
-                                    <?php endif; ?>
+                                    <img src="<?php echo has_post_thumbnail($related_project_id) ? get_the_post_thumbnail_url($related_project_id, 'medium') : get_template_directory_uri() . '/images/nophoto.png'; ?>" alt="<?php echo get_the_title($related_project_id); ?>" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;">
                                     
                                     <div style="flex: 1;">
                                         <h3 style="margin: 0 0 10px 0; font-size: 20px;">

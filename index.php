@@ -7,8 +7,10 @@ include get_template_directory() . '/parts/header.php';
     include get_template_directory() . '/parts/serach-form.php';
     include get_template_directory() . '/parts/cta-email.php';
     include get_template_directory() . '/parts/archive-top-project.php';
+    include get_template_directory() . '/parts/cta-email.php';
     include get_template_directory() . '/parts/archive-top-new-mansions.php';
     include get_template_directory() . '/parts/archive-top-used-mansions.php';
+    include get_template_directory() . '/parts/cta-email.php';
     include get_template_directory() . '/parts/archive-top-news.php';
     ?>
 </main>

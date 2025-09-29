@@ -123,7 +123,7 @@ include get_template_directory() . '/parts/header.php';
                 <div class="properties-grid" id="properties-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                     <?php while (have_posts()) : the_post(); ?>
                         <div class="property-card" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                            <div class="property-image" style="width: 100%; height: 200px; background-size: cover; background-position: center; position: relative; background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'mansion-thumbnail') ?: get_template_directory_uri() . '/images/default-property.jpg'; ?>')">
+                            <div class="property-image" style="width: 100%; height: 200px; background-size: cover; background-position: center; position: relative; background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'mansion-thumbnail') ?: get_template_directory_uri() . '/images/nophoto.png'; ?>')">
                                 <?php if (get_post_meta(get_the_ID(), 'featured', true) === 'yes') : ?>
                                     <div style="position: absolute; top: 15px; right: 15px; background: #dc2626; color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px; font-weight: 600;"><?php 'Đề xuất'; ?></div>
                                 <?php endif; ?>

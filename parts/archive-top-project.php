@@ -6,7 +6,7 @@
         // プロジェクトのクエリ
         $featured_projects = new WP_Query(array(
             'post_type'      => 'project',
-            'posts_per_page' => 6,
+            'posts_per_page' => 12,
             'orderby'        => 'date',
             'order'          => 'DESC',
         ));

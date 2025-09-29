@@ -202,7 +202,7 @@ include get_template_directory() . '/parts/header.php';
                                     <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
                                         <div style="display: flex; gap: 15px;">
                                             <div style="width: 80px; height: 60px; background-size: cover; background-position: center; border-radius: 5px; flex-shrink: 0;" 
-                                                 style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail') ?: get_template_directory_uri() . '/images/default-mansion.jpg'; ?>')">
+                                                 style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'thumbnail') ?: get_template_directory_uri() . '/images/nophoto.png'; ?>')">
                                             </div>
                                             <div style="flex: 1;">
                                                 <h4 style="font-size: 14px; margin-bottom: 5px;">

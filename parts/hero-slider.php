@@ -5,7 +5,7 @@
         $slide_count = 0;
         foreach ($slides as $slide) :
             $slide_count++;
-            $image_url = !empty($slide['image']) ? $slide['image'] : get_template_directory_uri() . '/images/slide' . $slide_count . '.jpg';
+            $image_url = !empty($slide['image']) ? $slide['image'] : get_template_directory_uri() . '/images/nophoto.png';
             $title = !empty($slide['title']) ? $slide['title'] : 'Chung cư cao cấp mới xây';
             $description = !empty($slide['description']) ? $slide['description'] : 'Tìm ngôi nhà lý tưởng của bạn';
         ?>

@@ -128,7 +128,7 @@ include get_template_directory() . '/parts/header.php';
                 <div class="companies-grid" id="companies-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
                     <?php while ($companies_query->have_posts()) : $companies_query->the_post(); ?>
                         <div class="company-card" style="background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
-                            <div class="company-image" style="width: 100%; height: 200px; background-size: cover; background-position: center; position: relative; background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'mansion-thumbnail') ?: get_template_directory_uri() . '/images/default-company.jpg'; ?>')">
+                            <div class="company-image" style="width: 100%; height: 200px; background-size: cover; background-position: center; position: relative; background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'mansion-thumbnail') ?: get_template_directory_uri() . '/images/nophoto.png'; ?>')">
                             </div>
                             
                             <div class="company-content" style="padding: 25px;">
