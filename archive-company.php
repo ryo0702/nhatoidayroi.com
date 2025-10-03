@@ -189,7 +189,7 @@ include get_template_directory() . '/parts/header.php';
                 </div>
 
                 <!-- ページネーション -->
-                <div class="pagination" style="text-align: center; margin-top: 40px;">
+                <div class="pagination">
                     <?php
                     echo paginate_links(array(
                         'total' => $companies_query->max_num_pages,

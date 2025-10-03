@@ -172,11 +172,11 @@ include get_template_directory() . '/parts/header.php';
                 </div>
                 
                 <!-- ページネーション -->
-                <div class="pagination" style="text-align: center; margin-top: 50px;">
+                <div class="pagination">
                     <?php
                     echo paginate_links(array(
-                        'prev_text' => '« 前へ',
-                        'next_text' => '次へ »',
+                        'prev_text' => '« ' . 'Trước',
+                        'next_text' => 'Tiếp' . ' »',
                         'type'      => 'list',
                         'mid_size'  => 2,
                         'end_size'  => 1,

@@ -116,19 +116,55 @@ include get_template_directory() . '/parts/header.php';
                                     if ($value) {
                                         echo '<div class="detail-item">';
                                         echo '<label style="font-weight: bold; color: #666; display: block; margin-bottom: 5px;">' . $label . '</label>';
-                                        echo '<span>' . esc_html($value);
+                                        echo '<span>';
+                                        
+                                        // 金額の場合は数値フォーマットを適用
+                                        if (strpos($meta_key, 'price') !== false || strpos($meta_key, 'fee') !== false) {
+                                            $price_num = (float)$value;
+                                            
+                                            // ベトナムの通貨単位で表示
+                                            if ($price_num >= 1000000000) {
+                                                // 10億以上の場合（tỷ = billion）
+                                                $formatted_value = number_format($price_num / 1000000000, 1, ',', '.');
+                                                echo esc_html($formatted_value);
+                                            } elseif ($price_num >= 1000000) {
+                                                // 100万以上の場合（triệu = million）
+                                                $formatted_value = number_format($price_num / 1000000, 1, ',', '.');
+                                                echo esc_html($formatted_value);
+                                            } else {
+                                                // 100万未満の場合
+                                                $formatted_value = number_format($price_num, 0, ',', '.');
+                                                echo esc_html($formatted_value);
+                                            }
+                                        } else {
+                                            echo esc_html($value);
+                                        }
                                         
                                         // 単位を追加
                                         if (strpos($meta_key, 'price') !== false) {
-                                            echo '万円';
+                                            $price_num = (float)$value;
+                                            if ($price_num >= 1000000000) {
+                                                echo ' tỷ VND';
+                                            } elseif ($price_num >= 1000000) {
+                                                echo ' triệu VND';
+                                            } else {
+                                                echo ' VND';
+                                            }
                                         } elseif (strpos($meta_key, 'area') !== false) {
-                                            echo 'm²';
+                                            echo ' m²';
                                         } elseif (strpos($meta_key, 'fee') !== false) {
-                                            echo '円/月';
+                                            $price_num = (float)$value;
+                                            if ($price_num >= 1000000000) {
+                                                echo ' tỷ VND/tháng';
+                                            } elseif ($price_num >= 1000000) {
+                                                echo ' triệu VND/tháng';
+                                            } else {
+                                                echo ' VND/tháng';
+                                            }
                                         } elseif (strpos($meta_key, 'age') !== false) {
-                                            echo '年';
+                                            echo ' năm';
                                         } elseif (strpos($meta_key, 'floor') !== false) {
-                                            echo '階';
+                                            echo ' tầng';
                                         }
                                         
                                         echo '</span>';
@@ -147,12 +183,12 @@ include get_template_directory() . '/parts/header.php';
                             $gallery_images = get_property_gallery(get_the_ID());
                             if (!empty($gallery_images)) :
                             ?>
-                                <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                                     <?php foreach ($gallery_images as $image) : ?>
-                                        <div class="gallery-item" style="position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-                                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['label']); ?>" style="width: 100%; height: 150px; object-fit: cover;">
-                                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: white; padding: 8px; font-size: 12px; text-align: center;">
-                                                <?php echo esc_html($image['label']); ?>
+                                        <div class="gallery-item" style="position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); background: #f5f5f5;">
+                                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['type_label'] ?? ''); ?>" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;">
+                                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 12px; font-size: 13px; text-align: center;">
+                                                <?php echo esc_html($image['type_label'] ?? ''); ?>
                                             </div>
                                         </div>
                                     <?php endforeach; ?>
@@ -266,6 +302,23 @@ include get_template_directory() . '/parts/header.php';
         </section>
     <?php endwhile; ?>
 </main>
+
+<style>
+/* ギャラリー画像のレスポンシブ対応 */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+        gap: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+}
+</style>
 
 <?php
 include get_template_directory() . '/parts/footer.php';

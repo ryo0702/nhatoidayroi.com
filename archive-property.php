@@ -141,16 +141,36 @@ include get_template_directory() . '/parts/header.php';
                                     <?php 
                                     $price = get_post_meta(get_the_ID(), 'property_price', true);
                                     if ($price) {
-                                        echo '¥' . number_format($price) . '万円';
+                                        $price_num = (float)$price;
+                                        
+                                        // ベトナムの通貨単位で表示
+                                        if ($price_num >= 1000000000) {
+                                            // 10億以上の場合（tỷ = billion）
+                                            $formatted_price = number_format($price_num / 1000000000, 1, '.', ',');
+                                            echo $formatted_price . ' tỷ VND';
+                                        } elseif ($price_num >= 1000000) {
+                                            // 100万以上の場合（triệu = million）
+                                            $formatted_price = number_format($price_num / 1000000, 1, '.', ',');
+                                            echo $formatted_price . ' triệu VND';
+                                        } else {
+                                            // 100万未満の場合
+                                            echo number_format($price_num, 0, '.', ',') . ' VND';
+                                        }
                                     } else {
-                                        'Giá liên hệ';
+                                        echo 'Giá liên hệ';
                                     }
                                     ?>
                                 </div>
                                 <div class="property-details" style="display: flex; gap: 15px; margin-bottom: 15px; font-size: 14px; color: #666;">
                                     <span><?php echo get_post_meta(get_the_ID(), 'property_rooms', true) ?: 'Mặt bằng chưa xác định'; ?></span>
-                                    <span><?php echo get_post_meta(get_the_ID(), 'property_size', true) ?: 'Diện tích chưa xác định'; ?></span>
-                                    <span><?php echo get_post_meta(get_the_ID(), 'property_age', true) ?: __('築年数未定', 'nhatoidayroi'); ?></span>
+                                    <span><?php 
+                                    $size = get_post_meta(get_the_ID(), 'property_size', true);
+                                    echo $size ? esc_html($size) . ' m²' : 'Diện tích chưa xác định';
+                                    ?></span>
+                                    <span><?php 
+                                    $age = get_post_meta(get_the_ID(), 'property_age', true);
+                                    echo $age ? esc_html($age) . ' năm' : 'Tuổi tòa nhà chưa xác định';
+                                    ?></span>
                                 </div>
                                 
                                 <!-- 状態と物件タイプのバッジ表示 -->
@@ -258,7 +278,7 @@ include get_template_directory() . '/parts/header.php';
                 </div>
                 
                 <!-- ページネーション -->
-                <div class="pagination" style="text-align: center; margin-top: 50px;">
+                <div class="pagination">
                     <?php
                     echo paginate_links(array(
                         'prev_text' => '« ' . 'Trước',

@@ -25,9 +25,19 @@
                 
                 <!-- ユーザーアクション -->
                 <div class="user-actions">
-                    <a href="<?php echo esc_url(home_url('/login/')); ?>" class="login-btn">Đăng nhập</a>
-                    <a href="<?php echo esc_url(home_url('/register/')); ?>" class="register-btn">Đăng ký</a>
-                    <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="contact-btn">Liên hệ</a>
+                    <?php if (is_user_logged_in()) : ?>
+                        <span style="color: #666; font-size: 14px; margin-right: 15px;">
+                            Xin chào, <?php echo esc_html(wp_get_current_user()->display_name); ?>!
+                        </span>
+                        <?php if (current_user_can('manage_options')) : ?>
+                            <a href="<?php echo esc_url(admin_url()); ?>" class="admin-btn" style="background: #28a745; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s ease; margin-right: 10px;"><i class="fas fa-cog"></i> Quản trị</a>
+                        <?php endif; ?>
+                        <a href="<?php echo wp_logout_url(home_url('/?page=user-logout')); ?>" class="login-btn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                    <?php else : ?>
+                    <a href="<?php echo esc_url(home_url('/?page=user-login')); ?>" class="login-btn"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                    <a href="<?php echo esc_url(home_url('/?page=user-register')); ?>" class="register-btn"><i class="fas fa-user-plus"></i> Đăng ký</a>
+                    <?php endif; ?>
+                    <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="contact-btn"><i class="fas fa-envelope"></i> Liên hệ</a>
                 </div>
             </div>
         </div>
@@ -41,7 +51,7 @@
                 <nav class="area-nav">
                     <div class="nav-item">
                         <a href="<?php echo esc_url(home_url('/area/hanoi-city/')); ?>" class="nav-link">
-                            <span class="nav-icon">🏙️</span>
+                            <span class="nav-icon"><i class="fas fa-city"></i></span>
                             Hà Nội nội thành
                         </a>
                         <div class="dropdown-menu">
@@ -62,7 +72,7 @@
                     
                     <div class="nav-item">
                         <a href="<?php echo esc_url(home_url('/area/hanoi-suburb/')); ?>" class="nav-link">
-                            <span class="nav-icon">🌳</span>
+                            <span class="nav-icon"><i class="fas fa-tree"></i></span>
                             Hà Nội ngoại thành
                         </a>
                         <div class="dropdown-menu">
@@ -90,7 +100,7 @@
                 <!-- プロジェクト検索 -->
                 <div class="nav-item">
                     <a href="<?php echo esc_url(home_url('/projects/')); ?>" class="nav-link">
-                        <span class="nav-icon">🏗️</span>
+                        <span class="nav-icon"><i class="fas fa-hammer"></i></span>
                         Dự án
                     </a>
                     <div class="dropdown-menu">
@@ -117,9 +127,19 @@
     <div class="mobile-menu">
         <div class="mobile-menu-content">
             <div class="mobile-user-actions">
-                <a href="<?php echo esc_url(home_url('/login/')); ?>" class="mobile-login-btn">Đăng nhập</a>
-                <a href="<?php echo esc_url(home_url('/register/')); ?>" class="mobile-register-btn">Đăng ký</a>
-                <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="mobile-contact-btn">Liên hệ</a>
+                <?php if (is_user_logged_in()) : ?>
+                    <div style="color: #666; font-size: 14px; margin-bottom: 15px; text-align: center;">
+                        Xin chào, <?php echo esc_html(wp_get_current_user()->display_name); ?>!
+                    </div>
+                    <?php if (current_user_can('manage_options')) : ?>
+                        <a href="<?php echo esc_url(admin_url()); ?>" class="mobile-admin-btn" style="background: #28a745; color: white; padding: 10px; border-radius: 4px; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s ease; margin-bottom: 10px; display: block; text-align: center;"><i class="fas fa-cog"></i> Quản trị</a>
+                    <?php endif; ?>
+                    <a href="<?php echo wp_logout_url(home_url('/?page=user-logout')); ?>" class="mobile-login-btn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                <?php else : ?>
+                    <a href="<?php echo esc_url(home_url('/?page=user-login')); ?>" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                    <a href="<?php echo esc_url(home_url('/?page=user-register')); ?>" class="mobile-register-btn"><i class="fas fa-user-plus"></i> Đăng ký</a>
+                <?php endif; ?>
+                <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="mobile-contact-btn"><i class="fas fa-envelope"></i> Liên hệ</a>
             </div>
             
             <div class="mobile-area-nav">

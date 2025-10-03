@@ -9,7 +9,21 @@
                 <?php 
                 $price = get_post_meta(get_the_ID(), '_property_price', true);
                 if ($price) {
-                    echo '¥' . number_format($price) . '万円';
+                    $price_num = (float)$price;
+                    
+                    // ベトナムの通貨単位で表示
+                    if ($price_num >= 1000000000) {
+                        // 10億以上の場合（tỷ = billion）
+                        $formatted_price = number_format($price_num / 1000000000, 1, '.', ',');
+                        echo $formatted_price . ' tỷ VND';
+                    } elseif ($price_num >= 1000000) {
+                        // 100万以上の場合（triệu = million）
+                        $formatted_price = number_format($price_num / 1000000, 1, '.', ',');
+                        echo $formatted_price . ' triệu VND';
+                    } else {
+                        // 100万未満の場合
+                        echo number_format($price_num, 0, '.', ',') . ' VND';
+                    }
                 } else {
                     echo 'Giá liên hệ';
                 }
@@ -17,7 +31,10 @@
             </div>
             <div class="mansion-details">
                 <span><?php echo get_post_meta(get_the_ID(), '_property_rooms', true) ?: 'Mặt bằng chưa xác định'; ?></span>
-                <span><?php echo get_post_meta(get_the_ID(), '_property_area', true) ?: 'Diện tích chưa xác định'; ?></span>
+                <span><?php 
+                $area = get_post_meta(get_the_ID(), '_property_area', true);
+                echo $area ? esc_html($area) . ' m²' : 'Diện tích chưa xác định';
+                ?></span>
             </div>
             <div class="mansion-location">
                 <?php

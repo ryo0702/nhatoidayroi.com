@@ -59,6 +59,12 @@ function enqueue_google_fonts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
 
+// FontAwesomeの読み込み
+function enqueue_fontawesome() {
+    wp_enqueue_style('fontawesome', get_template_directory_uri() . '/fontawesome/css/all.min.css', array(), '6.4.0');
+}
+add_action('wp_enqueue_scripts', 'enqueue_fontawesome');
+
 // CTA フォーム処理
 function handle_cta_email_signup() {
     if (isset($_POST['submit_cta']) && wp_verify_nonce($_POST['cta_nonce'], 'cta_email_signup')) {
@@ -2866,22 +2872,20 @@ function project_images_callback($post) {
     ?>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
-        var frame;
         
-        $(".upload-project-image").on("click", function(e) {
+        $(document).on("click", ".upload-project-image", function(e) {
             e.preventDefault();
             
             var button = $(this);
             var item = button.closest(".project-image-item");
             var imageIdInput = item.find(".project-image-id");
-            var imageContainer = item.find("img").length ? item.find("img") : item.find("div");
+            var imageContainer = item.find("img");
+            var placeholderDiv = item.find("div").filter(function() {
+                return $(this).text().indexOf("画像を追加") > -1;
+            });
             
-            if (frame) {
-                frame.open();
-                return;
-            }
-            
-            frame = wp.media({
+            // 各ボタンごとに新しいメディアフレームを作成
+            var frame = wp.media({
                 title: "画像を選択",
                 button: {
                     text: "選択"
@@ -2891,14 +2895,22 @@ function project_images_callback($post) {
             
             frame.on("select", function() {
                 var attachment = frame.state().get("selection").first().toJSON();
+                var imageUrl = attachment.sizes && attachment.sizes.medium ? attachment.sizes.medium.url : attachment.url;
+                
                 imageIdInput.val(attachment.id);
                 
-                if (imageContainer.is("div")) {
-                    imageContainer.replaceWith("<img src=\"" + attachment.sizes.medium.url + "\" style=\"max-width: 100%; max-height: 80px; margin-bottom: 10px; border-radius: 4px;\" />");
+                if (imageContainer.length > 0) {
+                    // 既存の画像を更新
+                    imageContainer.attr("src", imageUrl);
+                } else if (placeholderDiv.length > 0) {
+                    // プレースホルダーを画像に置き換え
+                    placeholderDiv.replaceWith("<img src=\"" + imageUrl + "\" style=\"max-width: 100%; max-height: 80px; margin-bottom: 10px; border-radius: 4px;\" />");
                     // 削除ボタンを追加
-                    $("<button type=\"button\" class=\"remove-project-image\" style=\"position: absolute; top: 8px; right: 8px; background: #dc2626; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 14px; line-height: 1;\">×</button>").insertAfter(imageContainer);
+                    item.append("<button type=\"button\" class=\"remove-project-image\" style=\"position: absolute; top: 8px; right: 8px; background: #dc2626; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 14px; line-height: 1;\">×</button>");
                 } else {
-                    imageContainer.attr("src", attachment.sizes.medium.url);
+                    // 画像が見つからない場合は最後のボタンの前に追加
+                    button.before("<img src=\"" + imageUrl + "\" style=\"max-width: 100%; max-height: 80px; margin-bottom: 10px; border-radius: 4px;\" />");
+                    item.append("<button type=\"button\" class=\"remove-project-image\" style=\"position: absolute; top: 8px; right: 8px; background: #dc2626; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 14px; line-height: 1;\">×</button>");
                 }
                 
                 button.text("変更");
@@ -2907,7 +2919,7 @@ function project_images_callback($post) {
             frame.open();
         });
         
-        $(".remove-project-image").on("click", function(e) {
+        $(document).on("click", ".remove-project-image", function(e) {
             e.preventDefault();
             
             var button = $(this);
@@ -3278,22 +3290,20 @@ function property_gallery_callback($post) {
     
     echo '<script>
     jQuery(document).ready(function($) {
-        var frame;
         
-        $(".upload-gallery-image").on("click", function(e) {
+        $(document).on("click", ".upload-gallery-image", function(e) {
             e.preventDefault();
             
             var button = $(this);
             var item = button.closest(".gallery-item");
             var imageIdInput = item.find(".gallery-image-id");
-            var imageContainer = item.find("img").length ? item.find("img") : item.find("div");
+            var imageContainer = item.find("img");
+            var placeholderDiv = item.find("div").filter(function() {
+                return $(this).text().indexOf("画像を追加") > -1;
+            });
             
-            if (frame) {
-                frame.open();
-                return;
-            }
-            
-            frame = wp.media({
+            // 各ボタンごとに新しいメディアフレームを作成
+            var frame = wp.media({
                 title: "画像を選択",
                 button: {
                     text: "選択"
@@ -3303,14 +3313,22 @@ function property_gallery_callback($post) {
             
             frame.on("select", function() {
                 var attachment = frame.state().get("selection").first().toJSON();
+                var imageUrl = attachment.sizes && attachment.sizes.medium ? attachment.sizes.medium.url : attachment.url;
+                
                 imageIdInput.val(attachment.id);
                 
-                if (imageContainer.is("div")) {
-                    imageContainer.replaceWith("<img src=\"" + attachment.sizes.medium.url + "\" style=\"max-width: 100%; max-height: 120px; margin-bottom: 15px; border-radius: 4px;\" />");
+                if (imageContainer.length > 0) {
+                    // 既存の画像を更新
+                    imageContainer.attr("src", imageUrl);
+                } else if (placeholderDiv.length > 0) {
+                    // プレースホルダーを画像に置き換え
+                    placeholderDiv.replaceWith("<img src=\"" + imageUrl + "\" style=\"max-width: 100%; max-height: 120px; margin-bottom: 15px; border-radius: 4px;\" />");
                     // 削除ボタンを追加
-                    $("<button type=\"button\" class=\"remove-gallery-image\" style=\"position: absolute; top: 10px; right: 10px; background: #dc2626; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 16px; line-height: 1;\">×</button>").insertAfter(imageContainer);
+                    item.append("<button type=\"button\" class=\"remove-gallery-image\" style=\"position: absolute; top: 10px; right: 10px; background: #dc2626; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 16px; line-height: 1;\">×</button>");
                 } else {
-                    imageContainer.attr("src", attachment.sizes.medium.url);
+                    // 画像が見つからない場合は最後のボタンの前に追加
+                    button.before("<img src=\"" + imageUrl + "\" style=\"max-width: 100%; max-height: 120px; margin-bottom: 15px; border-radius: 4px;\" />");
+                    item.append("<button type=\"button\" class=\"remove-gallery-image\" style=\"position: absolute; top: 10px; right: 10px; background: #dc2626; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 16px; line-height: 1;\">×</button>");
                 }
                 
                 button.text("変更");
@@ -3319,7 +3337,7 @@ function property_gallery_callback($post) {
             frame.open();
         });
         
-        $(".remove-gallery-image").on("click", function(e) {
+        $(document).on("click", ".remove-gallery-image", function(e) {
             e.preventDefault();
             
             var button = $(this);
