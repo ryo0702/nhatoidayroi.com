@@ -848,19 +848,29 @@ function get_slider_images() {
         // デフォルトのスライド画像
         $slides = array(
             array(
-                'image' => get_template_directory_uri() . '/images/slide1.jpg',
+                'image' => get_template_directory_uri() . '/images/nophoto.png',
                 'title' => 'Chung cư cao cấp mới xây',
-                'description' => 'Tìm ngôi nhà lý tưởng của bạn'
+                'description' => 'Tìm ngôi nhà lý tưởng của bạn tại Hà Nội'
             ),
             array(
-                'image' => get_template_directory_uri() . '/images/slide2.jpg',
+                'image' => get_template_directory_uri() . '/images/nophoto.png',
                 'title' => 'Bất động sản vị trí thuận tiện',
-                'description' => 'Giới thiệu bất động sản gần ga tiện lợi'
+                'description' => 'Giới thiệu bất động sản gần ga tiện lợi và trung tâm thành phố'
             ),
             array(
-                'image' => get_template_directory_uri() . '/images/slide3.jpg',
+                'image' => get_template_directory_uri() . '/images/nophoto.png',
                 'title' => 'Hệ thống hỗ trợ đáng tin cậy',
-                'description' => 'Hỗ trợ từ mua đến nhập cư'
+                'description' => 'Hỗ trợ từ mua đến nhập cư một cách chuyên nghiệp'
+            ),
+            array(
+                'image' => get_template_directory_uri() . '/images/nophoto.png',
+                'title' => 'Dự án bất động sản hàng đầu',
+                'description' => 'Khám phá các dự án bất động sản chất lượng cao'
+            ),
+            array(
+                'image' => get_template_directory_uri() . '/images/nophoto.png',
+                'title' => 'Đầu tư bất động sản thông minh',
+                'description' => 'Cơ hội đầu tư bất động sản với tiềm năng tăng trưởng cao'
             ),
         );
     }
